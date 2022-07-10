@@ -18,6 +18,6 @@ namespace izolabella.KawaiiRed.NET
         private string Response { get; }
 
         [JsonIgnore]
-        public Uri ResponseUrl => new(Response);
+        public Uri ResponseUrl => new(this.Response);
     }
 }
