@@ -2,24 +2,23 @@
 using Newtonsoft.Json;
 using System.Globalization;
 
-namespace izolabella.KawaiiRed.NET
+namespace izolabella.KawaiiRed.NET;
+
+public class KawaiiRedClient
 {
-    public class KawaiiRedClient
+    public KawaiiRedClient()
     {
-        public KawaiiRedClient()
-        {
-            this.Client = new();
-        }
+        this.Client = new();
+    }
 
-        public HttpClient Client { get; }
+    public HttpClient Client { get; }
 
-        public static Uri BaseAddres => new("https://kawaii.red/api/");
+    public static Uri BaseAddres => new("https://kawaii.red/api/");
 
-        public async Task<GenericResponse?> GetGifAsync(GenericEndpointType Type)
-        {
-            using HttpResponseMessage Message = await this.Client.GetAsync(BaseAddres + $"gif/{Type.Singular.ToLower(CultureInfo.InvariantCulture)}/token%3Danonymous/");
-            string A = await Message.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<GenericResponse>(A);
-        }
+    public async Task<GenericResponse?> GetGifAsync(GenericEndpointType Type)
+    {
+        using HttpResponseMessage Message = await this.Client.GetAsync(BaseAddres + $"gif/{Type.Singular.ToLower(CultureInfo.InvariantCulture)}/token%3Danonymous/");
+        string A = await Message.Content.ReadAsStringAsync();
+        return JsonConvert.DeserializeObject<GenericResponse>(A);
     }
 }

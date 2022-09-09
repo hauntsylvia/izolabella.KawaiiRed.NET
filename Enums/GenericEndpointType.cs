@@ -4,18 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace izolabella.KawaiiRed.NET.Enums
+namespace izolabella.KawaiiRed.NET.Enums;
+
+public class GenericEndpointType
 {
-    public class GenericEndpointType
+    public GenericEndpointType(string Singular, string Verb)
     {
-        public GenericEndpointType(string Singular, string Verb)
-        {
-            this.Singular = Singular;
-            this.Verb = Verb;
-        }
-
-        public string Singular { get; }
-
-        public string Verb { get; }
+        this.Singular = Singular;
+        this.Verb = Verb;
     }
+
+    public string Singular { get; }
+
+    public string Verb { get; }
 }
